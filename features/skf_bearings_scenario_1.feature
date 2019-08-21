@@ -1,7 +1,7 @@
 # Created by Amrita at 20-08-2019
 Feature: SKF application Test Scenario 1
 
-  Scenario Outline: Launch SKF application and fetch the drop down options test
+  Scenario: Launch SKF application and fetch the drop down options test
     Given User is on SKF Bearings Homepage
       When Click on 'Accept & continue' button
       Then Click on "Single bearing" image
@@ -23,7 +23,3 @@ Feature: SKF application Test Scenario 1
         |Track roller                      |
         |Deep groove ball bearings         |
       Then Close the dropdown without selecting any option
-
-    Examples:
-      |any|
-      |any|
