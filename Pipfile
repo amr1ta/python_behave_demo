@@ -9,6 +9,7 @@ verify_ssl = true
 behave = "*"
 selenium = "*"
 webdriver-manager = "*"
+pyhamcrest = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"

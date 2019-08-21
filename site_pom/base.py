@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -16,14 +17,14 @@ class Page(object):
         self.driver.maximize_window()
  
     def find_element(self, *locator):
-        # return self.driver.find_element(*locator)
         return self.driver_wait.until(EC.visibility_of_element_located(locator))
         
     def find_elements(self, *locator):
          return self.driver.find_elements(*locator)
 
     def find_element_by_text(self, text):
-        return self.driver.find_element_by_xpath("//*[contains(text(), {})]".format(text))
+        locator = (By.XPATH, "//*[contains(text(), {})]".format(text))
+        return self.driver_wait.until(EC.visibility_of_element_located(locator))
 
     def move_to_element(self, locator):
         el = self.driver.find_element(*locator)

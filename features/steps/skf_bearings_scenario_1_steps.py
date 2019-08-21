@@ -1,5 +1,7 @@
 from behave import given, when, then
-from behave.log_capture import capture
+from hamcrest import assert_that
+from hamcrest.library.collection.issequence_containinginanyorder \
+    import contains_inanyorder
 
 from site_pom.locators import MainPageLocators
 
@@ -36,17 +38,17 @@ def step_impl(context):
     context.driver.find_element(*MainPageLocators.SELECT_BEARING_TYPE).click()
 
 
-@then("Verify that {options_list} are displayed")
-def step_impl(context, options_list):
+@then("Verify that following options are displayed")
+def step_impl(context):
     """
     :type context: behave.runner.Context
-    :type options_list: str
     """
+    expected_result = [ row["bearing_type"]    for row in context.table ]
     opts_list = context.driver.find_elements(*MainPageLocators.OPTIONS_BEARING_TYPE)
-    for opt in opts_list:
-        assert opt.text in options_list, "This option is not found"
+    actual_result = [opt.text for opt in opts_list]
+    assert_that(actual_result, contains_inanyorder(*expected_result))
 
-    
+
 @then("Close the dropdown without selecting any option")
 def step_impl(context):
     """
