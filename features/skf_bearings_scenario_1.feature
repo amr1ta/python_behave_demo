@@ -1,13 +1,12 @@
 # Created by Amrita at 20-08-2019
-Feature: SKF application test
-  # Enter feature description here
+Feature: SKF application Test Scenario 1
 
   Scenario Outline: Launch SKF application and fetch the drop down options test
-    Given User is on "https://www.skfbearingselect.com"
-    When Click on "Accept & continue" button if displayed
-    Then Click on Single Bearing image
+    Given User is on SKF Bearings Homepage
+    When Click on 'Accept & continue' button
+    Then Click on "Single bearing" image
     Then Click on Select bearing type dropdown
-    Then validate that <Bearings_Options> are displayed
+    Then Verify that <Bearings_Options> are displayed
     Then Close the dropdown without selecting any option
 
     Examples:
