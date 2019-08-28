@@ -8,4 +8,4 @@ Python 3 and Pipenv (pip3 install pipenv)
 * Open terminal and cd to repo
 * `pipenv install`
 * `pipenv shell`
-* Run `behave`
+* Run `behave` or `python3 FrameworkRunner.py`
