@@ -1,9 +1,13 @@
-from site_pom.web_factory import get_browser_context
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from site_pom.base import Page
 
 
 def before_all(context):
-    driver = get_browser_context(context.config.userdata['browser'])
-    context.driver = driver
+    browser = context.config.userdata['browser']
+    if browser == "chrome":
+        context.driver = Page(webdriver.Chrome(
+            ChromeDriverManager().install()))
     context.homepage_url = context.config.userdata['homepage_url']
     
 def after_all(context):
